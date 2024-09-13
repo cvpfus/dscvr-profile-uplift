@@ -100,7 +100,7 @@ export const MyNFT = () => {
 
       {address && assetsByOwnerData && (
         <>
-          <h2 className="text-md text-center">Danger Zone: If you burn the NFT, you can't mint a new one.</h2>
+          <h2 className="text-md text-center">Danger Zone: If you burn the NFT, you still won't be able to mint a new one.</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
             {assetsByOwnerData.map((asset) => {
               return (
