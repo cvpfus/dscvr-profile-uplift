@@ -6,5 +6,5 @@ export const COLLECTION_ADDRESS =
   "CjRRuXtDdXzRzXEQy5BRY9v6aoSYngwWfRiTsVremDso";
 export const LIMIT = 4;
 export const EXAMPLE_IMG_URL = "https://storage.cvpfus.xyz/uplift_example.svg";
-// export const BACKEND_BASE_URL = "https://uplift-api.cvpfus.xyz";
-export const BACKEND_BASE_URL = "https://omen.tail81c24b.ts.net/api";
+export const BACKEND_BASE_URL = "https://uplift-api.cvpfus.xyz";
+// export const BACKEND_BASE_URL = "https://omen.tail81c24b.ts.net/api";
