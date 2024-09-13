@@ -51,34 +51,7 @@ const hasUserMinted = (assets, username) => {
   );
 };
 
-export const validatedUserInfo = async (username) => {
-  // check user's wallet
-  let userIcon;
-
-  const userInfoResponse = await getUserInfo(username);
-
-  if (userInfoResponse.data.errors || !userInfoResponse.data.data.userByName)
-    throw new Error("Error fetching user info");
-
-  const userByName = userInfoResponse.data.data.userByName;
-  const userWallets = userByName.wallets;
-  userIcon = userByName.iconUrl;
-
-  if (!userIcon) {
-    userIcon = `https://ui-avatars.com/api/?name=${username}&size=256&background=random`;
-  }
-
-  if (userWallets.length === 0)
-    throw new Error(
-      "The connected wallet is either not paired or the 'Allow Frames' setting is turned off",
-    );
-
-  const userSolanaWallets = userWallets
-    .filter((wallet) => wallet.walletChainType === "solana")
-    .map((wallet) => wallet.address.toLowerCase());
-
-  if (!userSolanaWallets) throw new Error("Wallet chain is not supported");
-
+export const checkUserNft = async (username) => {
   // check if the user has already minted an NFT
   let currentPage = 1;
   let umi = getUmi();
@@ -115,6 +88,34 @@ export const validatedUserInfo = async (username) => {
     currentTotal = nextAssets.total;
     currentLimit = nextAssets.limit;
   }
+};
+
+export const validatedUserInfo = async (username) => {
+  let userIcon;
+
+  const userInfoResponse = await getUserInfo(username);
+
+  if (userInfoResponse.data.errors || !userInfoResponse.data.data.userByName)
+    throw new Error("Error fetching user info");
+
+  const userByName = userInfoResponse.data.data.userByName;
+  const userWallets = userByName.wallets;
+  userIcon = userByName.iconUrl;
+
+  if (!userIcon) {
+    userIcon = `https://ui-avatars.com/api/?name=${username}&size=256&background=random`;
+  }
+
+  if (userWallets.length === 0)
+    throw new Error(
+      "The connected wallet is either not paired or the 'Allow Frames' setting is turned off",
+    );
+
+  const userSolanaWallets = userWallets
+    .filter((wallet) => wallet.walletChainType === "solana")
+    .map((wallet) => wallet.address.toLowerCase());
+
+  if (!userSolanaWallets) throw new Error("Wallet chain is not supported");
 
   return {
     wallets: userSolanaWallets,

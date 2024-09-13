@@ -16,6 +16,7 @@ import * as htmlToImage from "html-to-image";
 import { generateUplift } from "../utils/uplift.js";
 import { getUmi } from "../utils/umi.js";
 import {
+  checkUserNft,
   formatFollowerCount,
   getFirstTwoLetters,
   validatedUserInfo,
@@ -42,6 +43,7 @@ const mintAsset = async (req, res) => {
 
     try {
       const userInfo = await validatedUserInfo(body.username);
+      await checkUserNft();
 
       if (!userInfo.wallets.includes(body.userAddress.toLowerCase()))
         return res.status(400).json({
