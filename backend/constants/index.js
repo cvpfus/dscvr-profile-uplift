@@ -13,6 +13,8 @@ export const GRAPHQL_API_URL = "https://api.dscvr.one/graphql";
 export const UPLIFT_PROMPT = `
 Provide a brief and uplifting review of a user on DSCVR. Emphasize the strengths and positive attributes of the DSCVR user. Keep it one paragraph, include some emojis if it fits.
 
+Your response should not exceed 80 words.
+
 Remember, just reply with your praise. Don't start with something like "Here's a compliment for the DSCVR profile of XXX", just straight to your positive comment.
 
 The data will be provided and each fields are explained below.
