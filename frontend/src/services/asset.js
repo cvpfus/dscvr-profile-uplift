@@ -2,7 +2,6 @@ import axios from "axios";
 import {
   burn,
   fetchAssetsByCollection,
-  fetchAssetsByOwner,
 } from "@metaplex-foundation/mpl-core";
 import toast from "react-hot-toast";
 import {
