@@ -43,7 +43,7 @@ const mintAsset = async (req, res) => {
 
     try {
       const userInfo = await validatedUserInfo(body.username);
-      await checkUserNft();
+      await checkUserNft(body.username);
 
       if (!userInfo.wallets.includes(body.userAddress.toLowerCase()))
         return res.status(400).json({
